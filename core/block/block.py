@@ -8,5 +8,5 @@ class Block:
         self.r = 255
         self.g = 0
         self.b = 255
-        self.alive = true
+        self.alive = True
 
