@@ -1,5 +1,7 @@
 import pygame
 import math
+from core.block import Block
+from core.gfx import draw
 
 SPACE = 6
 GRID_X = 50
@@ -15,6 +17,8 @@ running = True
 
 c = 0
 
+b = Block()
+
 while running:
     c = c + 0.01
     for event in pygame.event.get():
@@ -22,17 +26,8 @@ while running:
             running = False
 
     screen.fill(background_colour)
-
-    for x in range(GRID_X):
-        for y in range(GRID_Y):
-            if x == 0 and y == 0:
-                pygame.draw.rect(screen, pygame.Color(0,200,0), pygame.Rect(10 + x * SPACE, 10 + y * SPACE, 5,5))
-            else:
-                pygame.draw.rect(screen, pygame.Color(100,0,100), pygame.Rect(10 + x * SPACE, 10 + y * SPACE, 5,5))
-
-            if x == GRID_X - 1 and y == GRID_Y - 1:
-                pygame.draw.rect(screen, pygame.Color(200,0,0), pygame.Rect(10 + x * SPACE, 10 + y * SPACE, 5,5))
-            else:
-                pygame.draw.rect(screen, pygame.Color(100,0,100), pygame.Rect(10 + x * SPACE, 10 + y * SPACE, 5,5))
+    pygame.draw.rect(screen, pygame.Color(b.r, b.g, b.b), pygame.Rect(10,10, b.width, b.height))
+    draw(screen,100,100,23,200)
+    draw(screen,200,130,230,100)
 
     pygame.display.flip()
