@@ -1,1 +1,1 @@
-from .gfx import draw
+from .gfx import *
