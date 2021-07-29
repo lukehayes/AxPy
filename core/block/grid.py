@@ -14,3 +14,16 @@ class Grid():
         """docstring for update"""
         print("Rendering Grid")
 
+    def create(self, x, y):
+        grid = dict()
+
+        for xx in range(x):
+            d = dict()
+            for yy in range(y):
+                block = Block(xx * 11, yy * 11)
+                d.append(b)
+
+            grid.append(d)
+
+
+
