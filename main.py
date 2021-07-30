@@ -1,7 +1,8 @@
 import pygame
 import math
 from core.block import Block
-from core.gfx import draw
+from core.block import Grid
+from core.gfx import draw,drawBlock
 
 SPACE = 6
 GRID_X = 50
@@ -17,7 +18,9 @@ running = True
 
 c = 0
 
-b = Block()
+b = Block(10,10)
+gridObject= Grid(10,4)
+grid = gridObject.create()
 
 while running:
     c = c + 0.01
@@ -29,5 +32,12 @@ while running:
     pygame.draw.rect(screen, pygame.Color(b.r, b.g, b.b), pygame.Rect(10,10, b.width, b.height))
     draw(screen,100,100,23,200)
     draw(screen,200,130,230,100)
+
+
+
+    for x in range(len(grid)):
+        row = grid[x]
+        for y in range(len(row)):
+            drawBlock(screen, grid[x][y])
 
     pygame.display.flip()
