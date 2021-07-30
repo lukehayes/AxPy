@@ -1,3 +1,5 @@
+from core.block import Block
+
 
 class Grid():
     """docstring for Grid"""
@@ -14,7 +16,7 @@ class Grid():
         """docstring for update"""
         print("Rendering Grid")
 
-    def create(self, x, y):
+    def create(self):
         """Create an X by Y size grid"""
         """
         Parameters
@@ -31,12 +33,16 @@ class Grid():
         """
         grid = dict()
 
-        for xx in range(x):
+        for x in range(self.width):
             d = dict()
-            for yy in range(y):
-                block = Block(xx * 11, yy * 11)
+            for y in range(self.height):
+                block = Block(x * 11, y * 11)
                 d.append(b)
 
             grid.append(d)
 
         return grid
+
+
+    def draw(self):
+        pass
