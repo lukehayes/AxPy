@@ -5,6 +5,15 @@ class Grid():
     """docstring for Grid"""
 
     def __init__(self, width, height):
+        """Constructor"""
+        """
+        Parameters
+        ----------
+        width : int
+            The WIDTH size of the grid.
+        height : int
+            The HEIGHT size of the grid.
+        """
         self.width = width
         self.height = height
 
@@ -17,29 +26,22 @@ class Grid():
         print("Rendering Grid")
 
     def create(self):
-        """Create an X by Y size grid"""
+        """Build the grid"""
         """
-        Parameters
-        ----------
-        x : int
-            The X size of the grid.
-        y : int
-            The Y size of the grid.
-
         Returns
         ----------
-        Dict
+        List
             A grid of pre built block types.
         """
-        grid = dict()
+        grid = []
 
         for x in range(self.width):
-            d = dict()
+            row = []
             for y in range(self.height):
                 block = Block(x * 11, y * 11)
-                d.append(b)
+                row.append(block)
 
-            grid.append(d)
+            grid.append(row)
 
         return grid
 
