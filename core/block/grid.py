@@ -15,6 +15,20 @@ class Grid():
         print("Rendering Grid")
 
     def create(self, x, y):
+        """Create an X by Y size grid"""
+        """
+        Parameters
+        ----------
+        x : int
+            The X size of the grid.
+        y : int
+            The Y size of the grid.
+
+        Returns
+        ----------
+        Dict
+            A grid of pre built block types.
+        """
         grid = dict()
 
         for xx in range(x):
@@ -25,5 +39,4 @@ class Grid():
 
             grid.append(d)
 
-
-
+        return grid
