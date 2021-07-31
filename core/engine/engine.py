@@ -3,6 +3,7 @@ class Engine():
     def __init__(self):
         self.width = 800
         self.height = 600
+        self.bg_color = (0,0,0)
 
     @property
     def width(self):
@@ -23,3 +24,10 @@ class Engine():
     def height(self, value):
         self._height = value
 
+    @property
+    def bg_color(self):
+        return self._bg_color
+
+    @bg_color.setter
+    def bg_color(self, value):
+        self._bg_color = value
