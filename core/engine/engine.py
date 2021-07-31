@@ -4,6 +4,7 @@ class Engine():
         self.width = width
         self.height = height
         self.bg_color = (0,0,0)
+        self.fps = 30
 
     @property
     def width(self):
