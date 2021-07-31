@@ -1,3 +1,5 @@
+import pygame
+
 class Engine():
     """The brain of the application"""
     def __init__(self, width, height):
@@ -5,7 +7,10 @@ class Engine():
         self.height = height
         self.bg_color = (0,0,0)
         self.fps = 30
+        self.clock = pygame.time.Clock()
+        self.running = True
 
+    """ PROPERTIES  """
     @property
     def width(self):
         print("Getting Property")
@@ -31,3 +36,23 @@ class Engine():
     @bg_color.setter
     def bg_color(self, value):
         self._bg_color = value
+
+    """ METHODS  """
+
+    def update(self):
+
+        deltaTime = 0
+
+        while self.running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+
+            print(deltaTime)
+
+            deltaTime = self.clock.tick(self.fps)/1000.0
+            pygame.display.flip()
+
+
+
+
