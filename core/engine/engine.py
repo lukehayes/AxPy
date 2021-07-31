@@ -1,8 +1,8 @@
 class Engine():
     """The brain of the application"""
-    def __init__(self):
-        self.width = 800
-        self.height = 600
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
         self.bg_color = (0,0,0)
 
     @property
@@ -14,7 +14,6 @@ class Engine():
     def width(self, value):
         print("Setting Property")
         self._width = value
-
 
     @property
     def height(self):
