@@ -3,24 +3,25 @@ import math
 from core.block import Block
 from core.block import Grid
 from core.gfx import draw,drawBlock
+from core.engine import Engine
 
 SPACE = 6
-GRID_X = 50
-GRID_Y = 50
-background_colour = (0,0,0)
-(width, height) = (800, 600)
+engine = Engine(800,600)
 
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode((engine.width, engine.height))
 pygame.display.set_caption('Physics')
-screen.fill(background_colour)
+screen.fill(engine.bg_color)
 pygame.display.flip()
 running = True
 
 c = 0
 
 b = Block(10,10)
-gridObject= Grid(10,4)
+gridObject= Grid(10,10)
 grid = gridObject.create()
+
+dt = 0
+clock  = pygame.time.Clock()
 
 while running:
     c = c + 0.01
@@ -28,16 +29,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill(background_colour)
-    pygame.draw.rect(screen, pygame.Color(b.r, b.g, b.b), pygame.Rect(10,10, b.width, b.height))
-    draw(screen,100,100,23,200)
-    draw(screen,200,130,230,100)
-
-
+    print(dt)
+    screen.fill(engine.bg_color)
 
     for x in range(len(grid)):
         row = grid[x]
         for y in range(len(row)):
             drawBlock(screen, grid[x][y])
 
+
+    dt = clock.tick(engine.fps)/1000.0
     pygame.display.flip()
