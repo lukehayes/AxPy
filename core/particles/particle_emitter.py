@@ -10,15 +10,16 @@ class ParticleEmitter(Emitter):
 
         size = 100
         for x in range(size):
-            p = Particle(250,250)
+            p = Particle(self.x, self.y)
             self.particles.append(p)
 
     def load_particles(self):
         pass
         size = 10
         for x in range(size):
-            p = Particle(250,250)
+            p = Particle(self.x, self.y)
             self.particles.append(p)
+
 
 
 
