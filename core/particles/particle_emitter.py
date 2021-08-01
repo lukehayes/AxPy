@@ -4,8 +4,8 @@ from core.particles.particle import Particle
 
 class ParticleEmitter(Emitter):
     """ParticleEmitter"""
-    def __init__(self ):
-        super().__init__()
+    def __init__(self, x, y ):
+        super().__init__(x,y)
         self.particles = []
 
         size = 100
