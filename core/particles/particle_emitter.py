@@ -23,6 +23,10 @@ class ParticleEmitter(Emitter):
 
     def update(self, dt, screen):
         for particle in self.particles:
+            if not particle.alive:
+                self.particles.remove(particle)
+                pass
+
             particle.update(dt,screen)
 
 
