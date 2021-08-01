@@ -21,6 +21,8 @@ class ParticleEmitter(Emitter):
             self.particles.append(p)
 
 
-
+    def update(self, dt, screen):
+        for particle in self.particles:
+            particle.update(dt,screen)
 
 
