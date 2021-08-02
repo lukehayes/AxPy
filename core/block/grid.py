@@ -1,21 +1,13 @@
 from core.block import Block
+from core.gfx import drawBlock
 
 
 class Grid():
-    """docstring for Grid"""
 
     def __init__(self, width, height):
-        """Constructor"""
-        """
-        Parameters
-        ----------
-        width : int
-            The WIDTH size of the grid.
-        height : int
-            The HEIGHT size of the grid.
-        """
         self.width = width
         self.height = height
+        self.grid = []
 
     def update(self):
         """docstring for update"""
@@ -27,24 +19,18 @@ class Grid():
 
     def create(self):
         """Build the grid"""
-        """
-        Returns
-        ----------
-        List
-            A grid of pre built block types.
-        """
-        grid = []
-
         for x in range(self.width):
             row = []
             for y in range(self.height):
                 block = Block(x * 11, y * 11)
                 row.append(block)
 
-            grid.append(row)
+            self.grid.append(row)
 
-        return grid
+        return self.grid
 
-
-    def draw(self):
-        pass
+    def draw(self, screen):
+        """Draw the grid"""
+        for row in self.grid:
+            for block in row:
+                drawBlock(screen, block)
