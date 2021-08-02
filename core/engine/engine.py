@@ -13,12 +13,10 @@ class Engine():
     """ PROPERTIES  """
     @property
     def width(self):
-        print("Getting Property")
         return self._width
 
     @width.setter
     def width(self, value):
-        print("Setting Property")
         self._width = value
 
     @property
