@@ -1,14 +1,14 @@
 
 class Block:
     """Base class for a block."""
-    def __init__(self, x, y):
+    def __init__(self, x, y, r = 255, g = 0, b = 255, width = 10, height = 10 ):
         self.speed = 5
         self.x = x
         self.y = y
-        self.width = 10
-        self.height = 10
-        self.r = 255
-        self.g = 0
-        self.b = 255
+        self.width = width
+        self.height = height
+        self.r = r
+        self.g = g
+        self.b = b
         self.alive = True
 
