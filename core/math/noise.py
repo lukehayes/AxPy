@@ -1,5 +1,4 @@
 from opensimplex import OpenSimplex
-import random
 
 class Noise(object):
 
