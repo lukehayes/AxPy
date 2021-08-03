@@ -22,7 +22,7 @@ def drawRect(screen, rect):
     Draw a Rect
 
     Args:
-        screen  (pygame.Surface): The initial value
+        screen  (pygame.Surface): The screen to draw to
         rect    (pygame.Rect)   : The Rect to draw
 
     Returns:
@@ -36,8 +36,8 @@ def drawBlock(screen, block):
     Draw a block
 
     Args:
-        screen  (pygame.Surface): The initial value
-        block   (core.block)   : The Block to draw
+        screen  (pygame.Surface): The screen to draw to
+        block   (core.block)    : The Block to draw
 
     Returns:
         None: Draws a Block
@@ -46,3 +46,22 @@ def drawBlock(screen, block):
                      pygame.Color(block.r, block.g,block.b),
                      pygame.Rect(block.x, block.y, block.width, block.height)
                      )
+
+
+def drawGrid(screen, grid):
+    """
+    Draw a grid
+
+    Args:
+        screen  (pygame.Surface): The screen to draw to
+        grid   (core.block)     : The grid to draw
+
+    Returns:
+        None: Draws a grid
+    """
+    for row in grid:
+        for block in row:
+            pygame.draw.rect(screen,
+                             pygame.Color(block.r, block.g,block.b),
+                             pygame.Rect(block.x, block.y, block.width, block.height)
+                             )
