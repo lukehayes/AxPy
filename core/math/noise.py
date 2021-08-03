@@ -3,10 +3,12 @@ import random
 
 class Noise(object):
 
-    @classmethod
-    def noise2D(cls, x,y, seed = 0):
+    @staticmethod
+    def noise2D(x,y, seed = 0):
         """
         Create 2D noise.
+
+        Static class method.
 
         Args:
             cls  (object): The initial value
