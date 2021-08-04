@@ -65,3 +65,18 @@ def drawGrid(screen, grid):
                              pygame.Color(block.r, block.g,block.b),
                              pygame.Rect(block.x, block.y, block.width, block.height)
                              )
+
+def drawSprite(screen, sprite):
+    """
+    Draw a sprite
+
+    Args:
+        screen  (pygame.Surface): The screen to draw to
+        sprite  (core.gfx)      : The sprite to draw
+
+    Returns:
+        None: Draws a sprite to the screen
+    """
+    screen.blit(sprite.image, (sprite.x, sprite.y))
+
+
