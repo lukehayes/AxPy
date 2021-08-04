@@ -2,9 +2,10 @@ import pygame
 
 class Engine():
     """The brain of the application"""
-    def __init__(self, width, height):
+    def __init__(self, width, height, title = "AxPy"):
         self.width = width
         self.height = height
+        self.title = title
         self.bg_color = (0,0,0)
         self.fps = 30
         self.clock = pygame.time.Clock()
@@ -34,6 +35,14 @@ class Engine():
     @bg_color.setter
     def bg_color(self, value):
         self._bg_color = value
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, value):
+        self._title = value
 
     """ METHODS  """
 
