@@ -29,3 +29,18 @@ class Sprite(object):
         self.scale_x = sx
         self.scale_y = sy
 
+        @property
+        def sx(self):
+            return self.sx
+
+        @sx.setter
+        def sx(self, value):
+            self.sx = value
+
+        @property
+        def sy(self):
+            return self.sy
+
+        @sy.setter
+        def sy(self, value):
+            self.sy = value
