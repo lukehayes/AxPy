@@ -11,7 +11,10 @@ from core.particles import Particle
 import random
 
 SPACE = 11
-engine = Engine(1024, 768)
+
+pygame.init()
+monitor_size = pygame.display.Info()
+engine = Engine(int(monitor_size.current_w / 2), int(monitor_size.current_h / 2))
 
 screen = pygame.display.set_mode((engine.width, engine.height), pygame.RESIZABLE)
 pygame.display.set_caption('Physics')
@@ -21,58 +24,39 @@ running = True
 
 
 c = 0
-
 dt = 0
 clock  = pygame.time.Clock()
 
-
-blocks = []
-
-anim = AnimatedSprite("python.png")
-
-for x in range(50):
-    row = []
-    for y in range(50):
-        b = Block(x * SPACE,y * SPACE)
-        b.r = 100
-        row.append(b)
-
-    blocks.append(row)
+scale_factor = 5
 
 
-def iterate(x,y):
-    block = blocks[x][y]
-    block.alive = True
+s = AnimatedSprite("spritesheet.png", x = 10, y = 10, sx = scale_factor, sy = scale_factor)
+s.x = 100
 
-    if block.alive:
-        block.r = 255
+frame = 0
 
-    return block
-
-
-
-s = Sprite("python.png", 100,100)
-r = pygame.Rect(30,0,100,100)
-ss = s.image.subsurface(r)
-
-
-print(ss)
 
 while running:
-    c = c + 0.01
+    c += 1
+
+    frame += 1
+
+    if c >  (8 * 6):
+        c = 0
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     screen.fill(engine.bg_color)
 
-    anim.play(10, c)
 
-    # screen.blit(ss, r)
-    # screen.blit(anim.image, anim.rect)
+    s.play(screen, 10)
 
-    # drawSprite(screen, s)
-    # drawSprite(screen, ss)
+    # screen.blit(s.image, (50,50))
+
+    # screen.blit(s.image, (0,0))
+    # s.play(screen, 5, c)
+    # screen.blit(s.image, (0,0), pygame.Rect((16 * scale_factor) * 6 + (frame * scale_factor), (16 * scale_factor) * 3, 16 * scale_factor, 16 * scale_factor) )
 
 
     dt = clock.tick(engine.fps)/1000.0
