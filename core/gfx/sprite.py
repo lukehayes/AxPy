@@ -15,7 +15,17 @@ class Sprite(object):
         """
         super().__init__()
         self.image = pygame.image.load("res/sprites/" + file).convert()
-        self.image = pygame.transform.scale(self.image, (int(1042/sx), int(768/sy) ))
+
+        # Scale our image by a scale factor
+        self.image = pygame.transform.scale(
+                        self.image,(
+                            self.image.get_width() * sx,
+                            self.image.get_height() * sy
+                        )
+                    )
+
         self.x = x
         self.y = y
+        self.scale_x = sx
+        self.scale_y = sy
 
