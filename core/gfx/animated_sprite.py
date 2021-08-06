@@ -10,7 +10,7 @@ class AnimatedSprite(Sprite):
 
     def play(self, screen, speed):
         animation = self.image.subsurface(self.rect)
-        ss = self.image.subsurface(self.rect)
+
         # screen.blit(self.image, (self.x, self.y), pygame.Rect(0,8 * x, 8 * 5,8 * 5))
 
         self.current_frame += (1 * self.scale_x)
