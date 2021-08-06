@@ -2,7 +2,7 @@ from core.gfx.sprite import Sprite
 import pygame
 
 class AnimatedSprite(Sprite):
-    def __init__(self, file, x = 0,y = 0, sx = 1, sy = 1, frame_size = 8):
+    def __init__(self, file, x = 0,y = 0, sx = 1, sy = 1, frame_size = 16):
         super().__init__(file, x, y, sx, sy)
         self.frame_size = frame_size
         self.current_frame = 0
@@ -20,10 +20,10 @@ class AnimatedSprite(Sprite):
 
 
         screen.blit(self.image, (0,0), pygame.Rect(
-            (16 * self.scale_x) * 6 + (self.current_frame * self.scale_x),
-            (16 * self.scale_y) * 3,
-            16 * self.scale_x,
-            16 * self.scale_y)
+            (self.frame_size * self.scale_x) * 6 + (self.current_frame * self.scale_x),
+            (self.frame_size * self.scale_y) * 3,
+            self.frame_size * self.scale_x,
+            self.frame_size * self.scale_y)
         )
 
 
