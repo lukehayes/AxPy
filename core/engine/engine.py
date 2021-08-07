@@ -3,6 +3,7 @@ import pygame
 class Engine():
     """The brain of the application"""
     def __init__(self, width, height, title = "AxPy"):
+        pygame.init()
         self.width = width
         self.height = height
         self.title = title
@@ -10,6 +11,10 @@ class Engine():
         self.fps = 30
         self.clock = pygame.time.Clock()
         self.running = True
+
+    @staticmethod
+    def getEngine():
+        return Engine(800,600)
 
     """ PROPERTIES  """
     @property
