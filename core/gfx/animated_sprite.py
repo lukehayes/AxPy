@@ -3,8 +3,8 @@ import pygame
 
 class AnimatedSprite(Sprite):
 
-    def __init__(self, file, x = 0,y = 0, speed = 0.1):
-        super().__init__(file, x, y)
+    def __init__(self, file, speed = 0.1):
+        super().__init__(file)
 
         self.current_frame = 0
         self.speed = speed
@@ -25,9 +25,9 @@ class AnimatedSprite(Sprite):
                 self.current_frame = 0
 
 
-        screen.blit(self.image, (200,200), pygame.Rect(
+        screen.blit(self.image, (self.x, self.y), pygame.Rect(
                                 (ts * sf) * int(self.current_frame),
-                                (ts * sf) * 4,
+                                (ts * sf) * 2,
                                 ts * sf,
                                 ts * sf)
                     )
