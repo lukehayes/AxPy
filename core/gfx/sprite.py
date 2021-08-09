@@ -2,7 +2,7 @@ import pygame
 
 class Sprite(object):
 
-    def __init__(self, file, x = 0,y = 0):
+    def __init__(self, file, x = 1,y = 1):
         """
         Constructor
 
