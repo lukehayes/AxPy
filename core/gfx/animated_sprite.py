@@ -9,6 +9,15 @@ class AnimatedSprite(Sprite):
         self.current_frame = 0
         self.speed = speed
         self.counter = 0
+        self.current_animation = "idle"
+        self.tile_meta = {
+            'idle' : 1,
+            'running' : 2,
+        }
+
+    def play(self, animation):
+        self.current_animation = animation
+        pass
 
     def update(self, dt, screen):
         ts = self.tile_size
@@ -27,7 +36,7 @@ class AnimatedSprite(Sprite):
 
         screen.blit(self.image, (self.x, self.y), pygame.Rect(
                                 (ts * sf) * int(self.current_frame),
-                                (ts * sf) * 2,
+                                (ts * sf) * self.tile_meta[self.current_animation],
                                 ts * sf,
                                 ts * sf)
                     )
