@@ -30,3 +30,14 @@ class TileMeta(object):
         else:
             return False
 
+    def add(self, new_meta):
+        """
+        Add a new, non default meta to the TileMeta object.
+
+        Args:
+            meta_name (Dict): A dictionary of new tile meta.
+
+        Returns:
+            None
+        """
+        self.meta_name = new_meta
