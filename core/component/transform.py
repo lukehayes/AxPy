@@ -1,6 +1,6 @@
 from core.component.component import Component
 
-class Transform(Component):
+class TransformComponent(Component):
     """
     Transform component
 
@@ -11,4 +11,5 @@ class Transform(Component):
         super().__init__()
 
     def update(self, detla):
+        print("Updating Transform")
         pass

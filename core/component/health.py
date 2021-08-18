@@ -1,6 +1,6 @@
 from core.component.component import Component
 
-class Health(Component):
+class HealthComponent(Component):
     """
     Health component
 
