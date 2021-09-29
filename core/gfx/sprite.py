@@ -2,7 +2,7 @@ import pygame
 
 class Sprite(object):
 
-    def __init__(self, file, x = 1,y = 1):
+    def __init__(self, file, x = 1,y = 1, xFrame = 0, yFrame = 0):
         """
         Constructor
 
@@ -26,6 +26,7 @@ class Sprite(object):
                         )
                     )
 
+
         @property
         def sx(self):
             return self.sx
@@ -41,3 +42,7 @@ class Sprite(object):
         @sy.setter
         def sy(self, value):
             self.sy = value
+
+        def draw(self,screen):
+            calc = 16 * 6
+            screen.blit(s.image, (0,400), (calc * self.xFrame, calc * self.yFrame, calc, calc))

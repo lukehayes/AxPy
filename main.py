@@ -30,6 +30,8 @@ s.x = 100
 
 while running:
 
+    calc = 16 * 6
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -40,7 +42,12 @@ while running:
 
     screen.fill(engine.bg_color)
 
-    screen.blit(s.image, (0,0)) # s.update(dt, screen)
+    s.draw(screen)
+
+    # screen.blit(s.image, (0,0))
+
+    # screen.blit(s.image, (0,400), (calc * 9,0, calc, calc))
+    # s.update(dt, screen)
 
     dt = clock.tick(engine.fps)/1000.0
     pygame.display.flip()
