@@ -19,6 +19,10 @@ class Sprite(object):
         self.yFrame = yFrame
         self.tile_size = 16
         self.scale_factor = 6
+        self.speed = 8
+
+        self.cX = 4
+        self.cY = 5
 
         # Scale our image by a scale factor
         self.image = pygame.transform.scale(
@@ -27,6 +31,16 @@ class Sprite(object):
                 self.image.get_height() * self.scale_factor
             )
         )
+
+    def update(self, dt):
+        self.cX += self.speed * dt
+
+        if self.cX >= 12:
+            self.cX = 6
+
+        self.xFrame = int(self.cX)
+        self.yFrame = int(self.cY)
+
 
     def draw(self,screen):
         calc = 16 * 6
