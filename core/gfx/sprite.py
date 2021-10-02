@@ -43,7 +43,7 @@ class Sprite(object):
 
 
     def draw(self,screen):
-        calc = 16 * 6
+        calc = self.tile_size * self.scale_factor
         screen.blit(self.image, (self.x, self.y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
 
     @property
