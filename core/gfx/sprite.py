@@ -30,7 +30,7 @@ class Sprite(object):
 
     def draw(self,screen):
         calc = 16 * 6
-        screen.blit(self.image, (0,400), (calc * self.xFrame, calc * self.yFrame, calc, calc))
+        screen.blit(self.image, (self.x, self.y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
 
     @property
     def sx(self):
