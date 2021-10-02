@@ -20,6 +20,7 @@ class Sprite(object):
         self.tile_size = 16
         self.scale_factor = 6
         self.speed = 8
+        self.animating = True
 
         self.cX = 4
         self.cY = 5
@@ -33,13 +34,15 @@ class Sprite(object):
         )
 
     def update(self, dt):
-        self.cX += self.speed * dt
 
-        if self.cX >= 12:
-            self.cX = 6
+        if self.animating:
+            self.cX += self.speed * dt
 
-        self.xFrame = int(self.cX)
-        self.yFrame = int(self.cY)
+            if self.cX >= 12:
+                self.cX = 6
+
+            self.xFrame = int(self.cX)
+            self.yFrame = int(self.cY)
 
 
     def draw(self,screen):
