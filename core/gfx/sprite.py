@@ -20,29 +20,28 @@ class Sprite(object):
 
         # Scale our image by a scale factor
         self.image = pygame.transform.scale(
-                        self.image,(
-                            self.image.get_width() * self.scale_factor,
-                            self.image.get_height() * self.scale_factor
-                        )
-                    )
+            self.image,(
+                self.image.get_width() * self.scale_factor,
+                self.image.get_height() * self.scale_factor
+            )
+        )
 
+    def draw(self,screen):
+        calc = 16 * 6
+        screen.blit(self.image, (0,400), (calc * self.xFrame, calc * self.yFrame, calc, calc))
 
-        @property
-        def sx(self):
-            return self.sx
+    @property
+    def sx(self):
+        return self.sx
 
-        @sx.setter
-        def sx(self, value):
-            self.sx = value
+    @sx.setter
+    def sx(self, value):
+        self.sx = value
 
-        @property
-        def sy(self):
-            return self.sy
+    @property
+    def sy(self):
+        return self.sy
 
-        @sy.setter
-        def sy(self, value):
-            self.sy = value
-
-        def draw(self,screen):
-            calc = 16 * 6
-            screen.blit(s.image, (0,400), (calc * self.xFrame, calc * self.yFrame, calc, calc))
+    @sy.setter
+    def sy(self, value):
+        self.sy = value
