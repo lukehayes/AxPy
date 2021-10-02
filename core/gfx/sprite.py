@@ -15,6 +15,8 @@ class Sprite(object):
         self.image = pygame.image.load("res/sprites/" + file).convert()
         self.x = x
         self.y = y
+        self.xFrame = xFrame
+        self.yFrame = yFrame
         self.tile_size = 16
         self.scale_factor = 6
 
