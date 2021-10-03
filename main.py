@@ -27,7 +27,7 @@ clock  = pygame.time.Clock()
 # s = AnimatedSprite("spritesheet.png")
 # s = Sprite("spritesheet.png", screen, x = 100, y = 100, xFrame = 6, yFrame = 3)
 p = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (0,0))
-p.speed = 3
+p2 = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (1,0))
 # a = AnimatedSprite("spritesheet.png", screen, x = 400, y = 600, xFrame = 6, yFrame = 3)
 # s.animating = False
 
