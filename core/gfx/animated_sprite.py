@@ -1,7 +1,7 @@
-from core.gfx.sprite import Sprite
+from core.gfx.base_sprite import BaseSprite
 import pygame
 
-class AnimatedSprite(object):
+class AnimatedSprite(BaseSprite):
 
     def __init__(self, file, screen, x = 1,y = 1, xFrame = 0, yFrame = 0):
         """
@@ -12,10 +12,8 @@ class AnimatedSprite(object):
             x  (int): The x position of the sprite
             y  (int): The y position of the sprite
         """
-        super().__init__()
+        super().__init__(x,y)
         self.image = pygame.image.load("res/sprites/" + file).convert()
-        self.x = x
-        self.y = y
         self.xFrame = xFrame
         self.yFrame = yFrame
         self.tile_size = 16

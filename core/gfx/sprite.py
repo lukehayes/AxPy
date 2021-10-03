@@ -1,6 +1,7 @@
 import pygame
+from core.gfx.base_sprite import BaseSprite
 
-class Sprite(object):
+class Sprite(BaseSprite):
 
     def __init__(self, file, screen, x = 1,y = 1, xFrame = 0, yFrame = 0):
         """
@@ -11,10 +12,8 @@ class Sprite(object):
             x  (int): The x position of the sprite
             y  (int): The y position of the sprite
         """
-        super().__init__()
+        super().__init__(x,y)
         self.image = pygame.image.load("res/sprites/" + file).convert()
-        self.x = x
-        self.y = y
         self.xFrame = xFrame
         self.yFrame = yFrame
         self.tile_size = 16
@@ -35,15 +34,7 @@ class Sprite(object):
         )
 
     def update(self, dt):
-
-        if self.animating:
-            self.cX += self.speed * dt
-
-            if self.cX >= 12:
-                self.cX = 6
-
-            self.xFrame = int(self.cX)
-            self.yFrame = int(self.cY)
+        pass
 
     def draw(self, x = None, y = None):
 
@@ -56,19 +47,3 @@ class Sprite(object):
 
         calc = self.tile_size * self.scale_factor
         self.screen.blit(self.image, (x,y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
-
-    @property
-    def sx(self):
-        return self.sx
-
-    @sx.setter
-    def sx(self, value):
-        self.sx = value
-
-    @property
-    def sy(self):
-        return self.sy
-
-    @sy.setter
-    def sy(self, value):
-        self.sy = value
