@@ -1,43 +1,75 @@
 from core.gfx.sprite import Sprite
 import pygame
 
-class AnimatedSprite(Sprite):
+class AnimatedSprite(object):
 
-    def __init__(self, file, speed = 0.1):
-        super().__init__(file)
+    def __init__(self, file, screen, x = 1,y = 1, xFrame = 0, yFrame = 0):
+        """
+        Constructor
 
-        self.current_frame = 0
-        self.speed = speed
-        self.counter = 0
-        self.current_animation = "idle"
-        self.tile_meta = {
-            'idle' : 1,
-            'running' : 2,
-        }
+        Args:
+            file  (str): The name of the image file
+            x  (int): The x position of the sprite
+            y  (int): The y position of the sprite
+        """
+        super().__init__()
+        self.image = pygame.image.load("res/sprites/" + file).convert()
+        self.x = x
+        self.y = y
+        self.xFrame = xFrame
+        self.yFrame = yFrame
+        self.tile_size = 16
+        self.scale_factor = 6
+        self.speed = 8
+        self.animating = True
+        self.screen = screen
 
-    def play(self, animation):
-        self.current_animation = animation
-        pass
+        self.cX = 4
+        self.cY = 5
 
-    def update(self, dt, screen):
-        ts = self.tile_size
-        sf = self.scale_factor
-        max_frame = 5
+        # Scale our image by a scale factor
+        self.image = pygame.transform.scale(
+            self.image,(
+                self.image.get_width() * self.scale_factor,
+                self.image.get_height() * self.scale_factor
+            )
+        )
 
-        self.counter += dt
+    def update(self, dt):
 
-        if self.counter > self.speed:
-            self.current_frame += 1
-            self.counter = 0
+        if self.animating:
+            self.cX += self.speed * dt
 
-            if self.current_frame > max_frame:
-                self.current_frame = 0
+            if self.cX >= 12:
+                self.cX = 6
 
+            self.xFrame = int(self.cX)
+            self.yFrame = int(self.cY)
 
-        screen.blit(self.image, (self.x, self.y), pygame.Rect(
-                                (ts * sf) * int(self.current_frame),
-                                (ts * sf) * self.tile_meta[self.current_animation],
-                                ts * sf,
-                                ts * sf)
-                    )
+    def draw(self, x = None, y = None):
 
+        # Check x and/or y are None here, use self version if so.
+        if x == None:
+            x = self.x
+
+        if y == None:
+            y = self.y
+
+        calc = self.tile_size * self.scale_factor
+        self.screen.blit(self.image, (x,y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
+
+    @property
+    def sx(self):
+        return self.sx
+
+    @sx.setter
+    def sx(self, value):
+        self.sx = value
+
+    @property
+    def sy(self):
+        return self.sy
+
+    @sy.setter
+    def sy(self, value):
+        self.sy = value
