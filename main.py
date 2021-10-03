@@ -25,7 +25,10 @@ dt = 0
 clock  = pygame.time.Clock()
 
 # s = AnimatedSprite("spritesheet.png")
-s = Sprite("spritesheet.png", x = 400, y = 600, xFrame = 6, yFrame = 3)
+# s = Sprite("spritesheet.png", screen, x = 100, y = 100, xFrame = 6, yFrame = 3)
+p = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (0,0))
+p.speed = 3
+# a = AnimatedSprite("spritesheet.png", screen, x = 400, y = 600, xFrame = 6, yFrame = 3)
 # s.animating = False
 
 c = 0
@@ -34,7 +37,6 @@ speed = 1
 while running:
 
     c += speed * dt
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -46,11 +48,14 @@ while running:
 
     screen.fill(engine.bg_color)
 
-    s.x = 200 + math.cos(c) * 100
-    s.y = 200 + math.sin(c) * 100
+    # s.update(dt)
+    # s.draw()
 
-    s.update(dt)
-    s.draw(screen)
+    # a.update(dt)
+    # a.draw()
+
+    p.update(dt)
+    p.draw()
 
     # screen.blit(s.image, (0,0))
 

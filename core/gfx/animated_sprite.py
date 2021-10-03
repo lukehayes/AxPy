@@ -3,7 +3,7 @@ import pygame
 
 class AnimatedSprite(BaseSprite):
 
-    def __init__(self, file, screen, x = 1,y = 1, xFrame = 0, yFrame = 0):
+    def __init__(self, file, screen, x = 1,y = 1, xTuple = (0,0), yTuple = (0,0)):
         """
         Constructor
 
@@ -13,8 +13,8 @@ class AnimatedSprite(BaseSprite):
             y  (int): The y position of the sprite
         """
         super().__init__(file, screen, x,y)
-        self.xFrame = xFrame
-        self.yFrame = yFrame
+        self.xFrameStart, self.xFrameEnd = xTuple
+        self.yFrameStart, self.yFrameEnd = yTuple
         self.speed = 8
         self.animating = True
 
@@ -25,9 +25,13 @@ class AnimatedSprite(BaseSprite):
 
         if self.animating:
             self.cX += self.speed * dt
+            # self.cY += self.speed * dt
 
-            if self.cX >= 12:
-                self.cX = 6
+            if self.cX >= self.xFrameEnd:
+                self.cX = self.xFrameStart
+
+            # if self.cY >= self.yFrameEnd:
+                # self.cY = self.yFrameStart
 
             self.xFrame = int(self.cX)
             self.yFrame = int(self.cY)
