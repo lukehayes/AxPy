@@ -45,10 +45,17 @@ class Sprite(object):
             self.xFrame = int(self.cX)
             self.yFrame = int(self.cY)
 
+    def draw(self, x = None, y = None):
 
-    def draw(self):
+        # Check x and/or y are None here, use self version if so.
+        if x == None:
+            x = self.x
+
+        if y == None:
+            y = self.y
+
         calc = self.tile_size * self.scale_factor
-        self.screen.blit(self.image, (self.x, self.y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
+        self.screen.blit(self.image, (x,y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
 
     @property
     def sx(self):
