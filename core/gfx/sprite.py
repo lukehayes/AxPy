@@ -2,7 +2,7 @@ import pygame
 
 class Sprite(object):
 
-    def __init__(self, file, x = 1,y = 1, xFrame = 0, yFrame = 0):
+    def __init__(self, file, screen, x = 1,y = 1, xFrame = 0, yFrame = 0):
         """
         Constructor
 
@@ -21,6 +21,7 @@ class Sprite(object):
         self.scale_factor = 6
         self.speed = 8
         self.animating = True
+        self.screen = screen
 
         self.cX = 4
         self.cY = 5
@@ -45,9 +46,9 @@ class Sprite(object):
             self.yFrame = int(self.cY)
 
 
-    def draw(self,screen):
+    def draw(self):
         calc = self.tile_size * self.scale_factor
-        screen.blit(self.image, (self.x, self.y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
+        self.screen.blit(self.image, (self.x, self.y), (calc * self.xFrame, calc * self.yFrame, calc, calc))
 
     @property
     def sx(self):
