@@ -24,15 +24,11 @@ running = True
 dt = 0
 clock  = pygame.time.Clock()
 
-# s = AnimatedSprite("spritesheet.png")
-# s = Sprite("spritesheet.png", screen, x = 100, y = 100, xFrame = 6, yFrame = 3)
 p = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (0,0))
 p2 = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (1,0))
-# a = AnimatedSprite("spritesheet.png", screen, x = 400, y = 600, xFrame = 6, yFrame = 3)
-# s.animating = False
 
 c = 0
-speed = 1
+speed = 1000
 
 while running:
 
@@ -46,21 +42,19 @@ while running:
             if event.key == pygame.K_q:
                 pygame.quit()
 
+            if event.key == pygame.K_a:
+                p.x -= speed * dt
+            if event.key == pygame.K_d:
+                p.x += speed * dt
+            if event.key == pygame.K_w:
+                p.y += speed * dt
+            if event.key == pygame.K_s:
+                p.y -= speed * dt
+
     screen.fill(engine.bg_color)
-
-    # s.update(dt)
-    # s.draw()
-
-    # a.update(dt)
-    # a.draw()
 
     p.update(dt)
     p.draw()
-
-    # screen.blit(s.image, (0,0))
-
-    # screen.blit(s.image, (0,400), (calc * 9,0, calc, calc))
-    # s.update(dt, screen)
 
     dt = clock.tick(engine.fps)/1000.0
     pygame.display.flip()
