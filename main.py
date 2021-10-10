@@ -28,11 +28,16 @@ p = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), 
 p2 = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5), yTuple = (1,0))
 
 c = 0
-speed = 1000
+speed = 100
+movement = 1
+
+vel = pygame.math.Vector2(0.1,0.1)
 
 while running:
 
     c += speed * dt
+
+    keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -42,14 +47,21 @@ while running:
             if event.key == pygame.K_q:
                 pygame.quit()
 
-            if event.key == pygame.K_a:
-                p.x -= speed * dt
-            if event.key == pygame.K_d:
-                p.x += speed * dt
-            if event.key == pygame.K_w:
-                p.y += speed * dt
-            if event.key == pygame.K_s:
-                p.y -= speed * dt
+    if keys[pygame.K_a]:
+        vel.x -= movement
+    if keys[pygame.K_d]:
+        vel.x += movement
+    if keys[pygame.K_w]:
+        vel.y -= movement
+    if keys[pygame.K_s]:
+        vel.y += movement
+
+    print(vel)
+    vel = pygame.math.Vector2.normalize(vel)
+    print(vel)
+
+    p.x += vel.x * speed * dt
+    p.y += vel.y * speed * dt
 
     screen.fill(engine.bg_color)
 
