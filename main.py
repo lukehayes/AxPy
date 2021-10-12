@@ -37,6 +37,8 @@ vel = pygame.math.Vector2(0.1,0.1)
 # KeyDown Checks
 leftPressed = False;
 rightPressed = False;
+upPressed = False;
+downPressed = False;
 
 while running:
 
@@ -48,33 +50,47 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+
+        # Key Down Checks
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 pygame.quit()
 
             if event.key == pygame.K_a:
                 leftPressed = True
-            else:
-                leftPressed = False
-
             if event.key == pygame.K_d:
                 rightPressed = True
-            else:
-                rightPressed = False
+            if event.key == pygame.K_w:
+                upPressed = True
+            if event.key == pygame.K_s:
+                downPressed = True
 
+        # Key Up Checks
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_q:
+                pygame.quit()
+            if event.key == pygame.K_a:
+                leftPressed = False
+            if event.key == pygame.K_d:
+                rightPressed = False
+            if event.key == pygame.K_w:
+                upPressed = False
+            if event.key == pygame.K_s:
+                downPressed = False
 
     if leftPressed:
         print("Left Down")
-    else:
-        print("Clear")
+    if rightPressed:
+        print("Right Down")
+    if upPressed:
+        print("Up Down")
+    if downPressed:
+        print("Down Down")
 
-
-    print(vel)
     vel = pygame.math.Vector2.normalize(vel)
-    print(vel)
 
-    p.x += vel.x * speed * dt
-    p.y += vel.y * speed * dt
+    p.x = vel.x
+    p.y = vel.y
 
     screen.fill(engine.bg_color)
 
