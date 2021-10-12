@@ -35,6 +35,8 @@ movement = 1
 vel = pygame.math.Vector2(0.1,0.1)
 maxVelocity = 200
 minVelocity = 0
+xDir = 0
+yDir = 0
 
 # KeyDown Checks
 leftPressed = False;
@@ -81,9 +83,8 @@ while running:
                 downPressed = False
 
     if leftPressed:
-        vel.x += 1 * speed * dt
+        print("Left Pressed")
     if rightPressed:
-        vel.x -= 1 * speed * dt
     if upPressed:
         print("Up Down")
     if downPressed:
