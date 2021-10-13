@@ -30,13 +30,15 @@ p2 = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5),
 
 # Speed, Movement, Velocity
 c = 0
-speed = 100
+speed = 5
 movement = 1
 vel = pygame.math.Vector2(0.1,0.1)
-maxVelocity = 200
+maxVelocity = 50
 minVelocity = 0
-xDir = 0
-yDir = 0
+current_speed_x = 0
+current_speed_y = 0
+xDir = 1
+yDir = 1
 
 # KeyDown Checks
 leftPressed = False;
@@ -82,20 +84,44 @@ while running:
             if event.key == pygame.K_s:
                 downPressed = False
 
+    # Starting Speed of 0
+    # When key is pressed down, increment by a value until max is reached
+    # Keep speed at max whilst key held down
+    # When key released, decrement the speed until reached 0
+
     if leftPressed:
-        print("Left Pressed")
-    if rightPressed:
+        current_speed_x += xDir * speed
+    else:
+        current_speed_x = current_speed_x
+
+    # if rightPressed:
+        # current_speed_x -= xDir * speed * dt
+    # else:
+        # current_speed_x += xDir * speed * dt
+
+
     if upPressed:
         print("Up Down")
     if downPressed:
         print("Down Down")
 
-    # vel = pygame.math.Vector2.normalize(vel)
+    if current_speed_x >= maxVelocity:
+        vel.x = xDir * current_speed_x
+    if current_speed_x <= 0:
+        current_speed_x = 0
 
+    if current_speed_y >= maxVelocity:
+        current_speed_y = maxVelocity
+    if current_speed_y <= 0:
+        current_speed_y = 0
+
+
+    print(current_speed_x)
+    # vel = pygame.math.Vector2.normalize(vel)
     print(vel)
 
-    p.x = vel.x
-    p.y = vel.y
+    p.x = vel.x * current_speed_x
+    p.y = vel.y * current_speed_y
 
     screen.fill(engine.bg_color)
 
