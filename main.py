@@ -30,10 +30,10 @@ p2 = AnimatedSprite("spritesheet.png", screen, x = 100, y = 100, xTuple = (0,5),
 
 # Speed, Movement, Velocity
 c = 0
-speed = 5
+speed = 1
 movement = 1
 vel = pygame.math.Vector2(0.1,0.1)
-maxVelocity = 50
+maxVelocity = 20
 minVelocity = 0
 current_speed_x = 0
 current_speed_y = 0
@@ -90,9 +90,22 @@ while running:
     # When key released, decrement the speed until reached 0
 
     if leftPressed:
-        current_speed_x += xDir * speed
+        vel.x += 1 * speed
+        if vel.x > maxVelocity:
+            vel.x = maxVelocity
     else:
-        current_speed_x = current_speed_x
+        vel.x -= 1 * speed
+        if vel.x < 0:
+            vel.x = 0
+
+    if rightPressed:
+        vel.x -= 1 * speed
+        if vel.x < -maxVelocity:
+            vel.x = -maxVelocity
+    else:
+        vel.x += 1 * speed
+        if vel.x < 0:
+            vel.x = 0
 
     # if rightPressed:
         # current_speed_x -= xDir * speed * dt
@@ -105,23 +118,8 @@ while running:
     if downPressed:
         print("Down Down")
 
-    if current_speed_x >= maxVelocity:
-        vel.x = xDir * current_speed_x
-    if current_speed_x <= 0:
-        current_speed_x = 0
-
-    if current_speed_y >= maxVelocity:
-        current_speed_y = maxVelocity
-    if current_speed_y <= 0:
-        current_speed_y = 0
-
-
-    print(current_speed_x)
-    # vel = pygame.math.Vector2.normalize(vel)
-    print(vel)
-
-    p.x = vel.x * current_speed_x
-    p.y = vel.y * current_speed_y
+    p.x += vel.x
+    p.y += vel.y
 
     screen.fill(engine.bg_color)
 
